@@ -46,7 +46,7 @@
                             @foreach($posts as $id => $post)
                                 <div class="carousel-item @if($id === 0) active @endif">
                                     @if($post->hasImage())
-                                        <img src="{{ $post->imageUrl() }}" class="d-block w-100 rounded" alt="{{ $post->title }}">
+                                        <img src="{{ $post->imageUrl() }}" class="d-block w-100 rounded-3" alt="{{ $post->title }}">
                                     @else
                                         <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg" class="d-block w-100"></svg>
                                     @endif

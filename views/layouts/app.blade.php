@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="text-center text-uppercase pb-1">
-                @if($server->isOnline())
+                @if($server && $server->isOnline())
                     <p class="h5">{{ trans_choice('messages.server.online', $server->getOnlinePlayers()) }}</p>
                 @else
                     <p class="h5">{{ trans('messages.server.offline') }}</p>
