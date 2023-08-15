@@ -4,7 +4,7 @@
     <header class="top-header" style="background: url('{{ setting('background') ? image_url(setting('background')) : 'https://via.placeholder.com/2000x500' }}') center / cover no-repeat">
         @include('elements.navbar')
 
-        <div class="container header-content">
+        <div class="container position-relative z-1">
             <div class="row py-5">
                 <div class="col-md-4 offset-md-2 text-center">
                     @if(setting('logo'))

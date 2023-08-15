@@ -1,3 +1,3 @@
 # DarkWave (Theme)
 
-Yellow theme for Azuriom with full-page home.
+Dark theme with full-page home.

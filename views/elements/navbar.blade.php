@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark text-uppercase">
+<nav class="navbar navbar-expand-md navbar-dark z-2" data-bs-theme="light">
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="{{ trans('messages.nav.toggle') }}">
             <span class="navbar-toggler-icon"></span>

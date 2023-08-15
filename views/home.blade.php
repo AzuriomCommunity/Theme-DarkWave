@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['isHome' => true])
 
 @section('title', trans('messages.home'))
 
@@ -6,7 +6,7 @@
     <header class="home" style="background: url('{{ setting('background') ? image_url(setting('background')) : 'https://via.placeholder.com/2000x500' }}') center / cover no-repeat">
         @include('elements.navbar')
 
-        <div class="container">
+        <div class="container position-relative z-1">
             <div class="row py-5">
                 <div class="col-md-4 offset-md-2 text-center text-uppercase d-flex align-items-center">
                     <div>
@@ -46,7 +46,7 @@
                             @foreach($posts as $id => $post)
                                 <div class="carousel-item @if($id === 0) active @endif">
                                     @if($post->hasImage())
-                                        <img src="{{ $post->imageUrl() }}" class="d-block w-100 rounded-3" alt="{{ $post->title }}">
+                                        <img src="{{ $post->imageUrl() }}" class="d-block w-100 rounded" alt="{{ $post->title }}">
                                     @else
                                         <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg" class="d-block w-100"></svg>
                                     @endif

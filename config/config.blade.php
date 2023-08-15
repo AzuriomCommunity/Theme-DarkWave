@@ -2,8 +2,9 @@
 
 @section('footer_description', 'Theme config')
 
-@push('footer-scripts')
+@include('admin.elements.color-picker')
 
+@push('footer-scripts')
     <script>
         function addLinkListener(el) {
             el.addEventListener('click', function () {
@@ -54,6 +55,15 @@
             <form action="{{ route('admin.themes.config', $theme) }}" method="POST" id="configForm">
                 @csrf
 
+                <div class="mb-3">
+                    <label class="form-label" for="colorInput">{{ trans('messages.fields.color') }}</label>
+                    <input type="color" class="form-control form-control-color color-picker @error('color') is-invalid @enderror" id="colorInput" name="color" value="{{ old('color', theme_config('color', '#f6ca60')) }}" required>
+
+                    @error('color')
+                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                    @enderror
+                </div>
+
                 @foreach(['header_description' => ['header_description','text'],
                           'footer_description' => ['footer_description','text'],
                 ] as $input)
@@ -63,7 +73,7 @@
                             <input type="text" class="form-control @error($input[0]) is-invalid @enderror" id="{{ $input[0] }}Input" name="{{ $input[0] }}" value="{{ old($input[0], theme_config($input[0])) }}">
                         @else
                             <label class="form-label" for="{{ $input[0] }}Input">{{ trans('theme::theme.config.'.$input[0]) }}</label>
-                            <textarea style="min-height: 150px" class="form-control html-editor @error($input[0]) is-invalid @enderror" id="{{ $input[0] }}Input" name="{{ $input[0] }}">{{ old($input[0], theme_config($input[0])) }}</textarea>
+                            <textarea class="form-control html-editor @error($input[0]) is-invalid @enderror" id="{{ $input[0] }}Input" name="{{ $input[0] }}" rows="5">{{ old($input[0], theme_config($input[0])) }}</textarea>
                         @endif
 
                         @error($input[0])<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
