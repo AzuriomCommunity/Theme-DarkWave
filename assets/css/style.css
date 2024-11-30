@@ -5,7 +5,7 @@
 [data-bs-theme=dark] {
     --bs-body-bg: #2e2c47;
     --bs-body-bg-rgb: 46, 44, 71;
-    --bs-primary-color-contrast: #2e2c47!important;
+    --bs-primary-color-contrast: #2e2c47 !important;
 }
 
 body {
@@ -27,7 +27,6 @@ a {
 
 .btn {
     font-weight: bold;
-    box-shadow: 0 0 0 2px rgba(var(--bs-primary-rgb), 0.4);
 }
 
 .content {

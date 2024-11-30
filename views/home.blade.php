@@ -7,9 +7,9 @@
         @include('elements.navbar')
 
         <div class="container position-relative z-1">
-            <div class="row py-5">
-                <div class="col-md-4 offset-md-2 text-center text-uppercase d-flex align-items-center">
-                    <div>
+            <div class="row justify-content-center py-5">
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                    <div class="text-uppercase text-center">
                         @if(setting('logo'))
                             <p>
                                 <img src="{{ image_url(setting('logo')) }}" class="img-fluid logo mb-3" alt="Logo">
@@ -40,38 +40,41 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
-                    <div id="news" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            @foreach($posts as $id => $post)
-                                <div class="carousel-item @if($id === 0) active @endif">
-                                    @if($post->hasImage())
-                                        <img src="{{ $post->imageUrl() }}" class="d-block w-100 rounded" alt="{{ $post->title }}">
-                                    @else
-                                        <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg" class="d-block w-100"></svg>
-                                    @endif
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>
-                                            <a href="{{ route('posts.show', $post) }}">
-                                                {{ $post->title }}
-                                            </a>
-                                        </h5>
+                @if(! $posts->isEmpty())
+                    <div class="col-md-6">
+                        <div id="news" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                @foreach($posts as $id => $post)
+                                    <div class="carousel-item @if($id === 0) active @endif">
+                                        @if($post->hasImage())
+                                            <img src="{{ $post->imageUrl() }}" class="d-block w-100 rounded" alt="{{ $post->title }}">
+                                        @else
+                                            <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg" class="d-block w-100"></svg>
+                                        @endif
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>
+                                                <a href="{{ route('posts.show', $post) }}">
+                                                    {{ $post->title }}
+                                                </a>
+                                            </h5>
 
-                                        <a href="{{ route('posts.show', $post) }}" class="btn btn-primary">
-                                            {{ format_date($post->published_at) }}
-                                        </a>
+                                            <a href="{{ route('posts.show', $post) }}" class="btn btn-primary">
+                                                {{ format_date($post->published_at) }}
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#news" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#news" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </button>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#news" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#news" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        </button>
                     </div>
-                </div>
+                @endif
+
             </div>
         </div>
     </header>
