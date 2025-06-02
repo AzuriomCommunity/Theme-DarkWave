@@ -37,7 +37,7 @@
         document.getElementById('configForm').addEventListener('submit', function () {
             let i = 0;
 
-            document.getElementById('links').querySelectorAll('.form-row').forEach(function (el) {
+            document.getElementById('links').querySelectorAll('.row').forEach(function (el) {
                 el.querySelectorAll('input').forEach(function (input) {
                     input.name = input.name.replace('{index}', i.toString());
                 });
